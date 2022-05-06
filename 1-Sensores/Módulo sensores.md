@@ -1,6 +1,4 @@
-# Módulo sensores: [TinkerCad](https://www.tinkercad.com/things/faMAJw6oNgH?sharecode=ss6zZmJpXl05tlcCZq_97fww6XrGTRBBIOujxUiUnEs)
-
-
+# Módulo Sensores
 
 ## Sensor de temperatura (TMP36)
 

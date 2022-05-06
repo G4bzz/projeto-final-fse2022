@@ -1,4 +1,4 @@
-# Módulo sensores: [TinkerCad](https://www.tinkercad.com/things/faMAJw6oNgH?sharecode=ss6zZmJpXl05tlcCZq_97fww6XrGTRBBIOujxUiUnEs)
+# Módulo Sensores
 
 ## Aplicação dos sensores no sistema final:
 Ambos os sistemas irão trabalhar juntos com o módulo de iluminação, pois, quando o viveiro estiver com uma temperatura baixa, as lâmpadas deverão ser acesas para aumentar a temperatura.
