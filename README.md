@@ -1,6 +1,6 @@
 # **Kit de Automação para viveiro de pintinhos**
 
-### **Discente** Gabriel de Oliveira Santos
+### **Discente:** Gabriel de Oliveira Santos
 ### **Docentes:** Bruno O. P. Prado e Marco T. Chella
 ### **Turma:** T02
 
