@@ -10,6 +10,7 @@ unsigned long timer_Agua = millis();
 volatile byte est_botaoComida = 0;
 volatile byte est_botaoAgua = 0;
 volatile byte busy = 0;
+volatile byte repondo_comida = 0;
 
 //Setup
 void setup(){
@@ -23,6 +24,9 @@ void setup(){
 	attachInterrupt(digitalPinToInterrupt(2), troca_estComida, RISING);
 	pinMode (3, INPUT);
 	attachInterrupt(digitalPinToInterrupt(3), troca_estAgua, RISING);
+	
+	//Balanca
+	pinMode (A3, INPUT);
 
 	//Inicializa os servos
 	servo_addAgua.write(0);
@@ -37,6 +41,7 @@ void temporizador_agua(){
 		timer_Agua = millis();
 	}	
 }
+
 
 //Troca de agua
 void troca_agua(){
@@ -63,14 +68,36 @@ void troca_estAgua(){
 	est_botaoAgua = !est_botaoAgua;
 }
 
+//Balanca
+void balanca(){
+	//Quando o compartimento de comida estiver com 900g ou mais de racao, finaliza a reposicao
+	if(analogRead(A3) >= 900 && repondo_comida){
+		servo_Comida.write(0);
+		repondo_comida = !repondo_comida;
+	}
+	//Caso o compartimento esteja em nivel baixo, aciona a reposicao
+	else if (analogRead(A3) < 400 && !repondo_comida){
+		servo_Comida.write(90);
+		repondo_comida = !repondo_comida;
+	}
+	//Enquanto estiver repondo a racao, mantem o dispenser aberto
+	else if (repondo_comida){
+		servo_Comida.write(90);
+	}
+}
+
 //Programa
 void loop(){
-	if(est_botaoComida==1) servo_Comida.write(90);
-	else servo_Comida.write(0);
+	if(est_botaoComida==1 && !repondo_comida) {
+		servo_Comida.write(90);
+		repondo_comida = !repondo_comida;
+		troca_estComida();
+	}
 	
 	if(est_botaoAgua==1) {
 		troca_agua();
 		troca_estAgua();
 	}
 	temporizador_agua();
+	balanca();
 }
