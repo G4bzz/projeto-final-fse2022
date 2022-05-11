@@ -73,8 +73,9 @@ float calcLumi(){
 void showInfos(){ 
   lcd.setCursor(6,0);
   lcd.print(calcTemp());
-  lcd.setCursor(6,1);
-  lcd.print(calcLumi());
+  lcd.setCursor(7,1);
+  float racao = analogRead(A3);
+  lcd.print(racao/1000);
 }
 
 //Temporizador que aciona as trocas automaticas
@@ -87,6 +88,13 @@ void temporizador_agua(){
 
 //Troca de agua
 void troca_agua(){
+	//Feedback LCD
+	lcd.clear();
+	lcd.setCursor(1,0);
+	lcd.print("Repondo a a");
+	lcd.setCursor(1,1);
+  	lcd.print("agua...");
+
 	//Obs.: tempos de acionamento ficticios, apenas para teste
 	repondo_agua = !repondo_agua;
 	servo_rmvAgua.write(90);
@@ -98,6 +106,7 @@ void troca_agua(){
 	servo_addAgua.write(0);
 	delay(1000);
 	repondo_agua = !repondo_agua;
+	lcd.clear();
 }
 
 //Estado do botão de troca de comida
@@ -114,13 +123,20 @@ void troca_estAgua(){
 void balanca(){
 	//Quando o compartimento de comida estiver com 900g ou mais de racao, finaliza a reposicao
 	if(analogRead(A3) >= 900 && repondo_comida){
+		lcd.clear();
 		servo_Comida.write(0);
 		repondo_comida = !repondo_comida;
 	}
 	//Caso o compartimento esteja em nivel baixo, aciona a reposicao
 	else if (analogRead(A3) < 400 && !repondo_comida){
+		//Feedback LCD
+		lcd.clear();
 		servo_Comida.write(90);
 		repondo_comida = !repondo_comida;
+		lcd.setCursor(1,0);
+		lcd.print("Repondo a");
+		lcd.setCursor(1,1);
+		lcd.print("racao...");
 	}
 	//Enquanto estiver repondo a racao, mantem o dispenser aberto
 	else if (repondo_comida){
@@ -145,48 +161,59 @@ void buzzer(bool v){
 }
 
 void emergencia(){
-	if(calcTemp() >= 40){
+	if(calcTemp() > 40){
+		lcd.setCursor(15,0);
+		lcd.print("!");
 		buzzer(true);
 		digitalWrite(13, LOW);
 		digitalWrite(A5, HIGH);
 	}
 	else if(calcTemp() < 35){
+		lcd.setCursor(15,0);
+		lcd.print("!");
 		buzzer(true);
 		digitalWrite(A5, LOW);
 		digitalWrite(13, HIGH);
 	}
 	else {
+		lcd.setCursor(15,0);
+		lcd.print(" ");
 		buzzer(false);
 		digitalWrite(A5, LOW);
 	}
 }
 
+void troca_comida(){
+	servo_Comida.write(90);
+	repondo_comida = !repondo_comida;
+	troca_estComida();
+}
+
 //Programa
 void loop() {
-	lcd.setCursor(0,0);
-	lcd.print("Temp:");
-	lcd.setCursor(1,1);
-  	lcd.print("Luz:");
-  
-	if(est_botaoComida) {
-		if(!repondo_comida){
-			servo_Comida.write(90);
-			repondo_comida = !repondo_comida;
-			troca_estComida();
-		}
-		else troca_estComida();
+	if(!repondo_comida && !repondo_agua){
+		lcd.setCursor(0,0);
+		lcd.print("Temp:");
+		lcd.setCursor(0,1);
+		lcd.print("Racao:");
+		lcd.setCursor(11,1);
+		lcd.print("kg");
+  		showInfos();
 	}
+  
+	if(est_botaoComida && !repondo_comida){
+		troca_comida();
+	}
+	
 
 	if(est_botaoAgua && !repondo_agua) {
 		troca_agua();
 		troca_estAgua();
 		timer_Agua = millis();
-		
 	}
 
 	temporizador_agua();
 	timer_lamps();
 	balanca();
-  	showInfos();
 	emergencia();
 }
