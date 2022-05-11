@@ -150,7 +150,7 @@ void emergencia(){
 		digitalWrite(13, LOW);
 		digitalWrite(A5, HIGH);
 	}
-	if(calcTemp() < 35){
+	else if(calcTemp() < 35){
 		buzzer(true);
 		digitalWrite(A5, LOW);
 		digitalWrite(13, HIGH);
