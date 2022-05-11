@@ -18,14 +18,17 @@ O kit conta com os seguintes componentes:
 - 3x | Micro servo;
 - 2x | Botão;
 - 2x | 1K ohm Resistor;
-- 1x | 220 ohm Resistor;
+- 1x | 10K ohm Resistor;
+- 2x | 220 ohm Resistor;
 - 1x | Sensor de temperatura [TMP36];
 - 2x | 250k Potenciômetro;
 - 1x | Relé SPDT;
 - 1x | Bateria 9V;
 - 4x | Lâmpada;
 - 1x | Sensor de luz ambiente [fototransistor];
-- 1x | LCD 16x2.
+- 1x | LCD 16x2;
+- 1x | LED vermelho;
+- 1x | Buzzer.
 
 Com todos estes componentes, será possível montar um sistema que consegue efetuar trocas de água e ração e também controlar a temperatura interna do viveiro por meio do acionamento de lâmpadas incandescentes, tudo isso de forma autônoma, mas também permitindo que o sistema possa ser controlado de forma manual.
 
@@ -40,6 +43,7 @@ Esses módulos serão organizados por pastas na raiz do repositório, enumerados
 - **LCD:** feedback visual acerca das informações coletadas/geradas;
 - **Servos:** mecanismos responsáveis pela manipulação dos recipientes de ração e água;
 	- Adicionando sistema de balança;
-- **União dos módulos anteriores:**
+- **União dos módulos anteriores**;
+- **Ajustes finais:**
 	- Tratamento de falhas;
-	- Ajustes finais;
+	- Feedback no LCD;
