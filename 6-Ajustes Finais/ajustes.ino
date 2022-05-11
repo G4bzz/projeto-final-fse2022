@@ -145,12 +145,12 @@ void buzzer(bool v){
 }
 
 void emergencia(){
-	if(calcTemp() >= 46){
+	if(calcTemp() >= 40){
 		buzzer(true);
 		digitalWrite(13, LOW);
 		digitalWrite(A5, HIGH);
 	}
-	if(calcTemp() < 40){
+	if(calcTemp() < 35){
 		buzzer(true);
 		digitalWrite(A5, LOW);
 		digitalWrite(13, HIGH);
