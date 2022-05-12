@@ -10,10 +10,22 @@
 
 ## **Sobre o projeto:**
 
-O mesmo se trata de um Kit de automação para viveiros de pintinhos. O projeto será desenvolvido através da plataforma TinkerCad, tendo como núcleo o uso do Arduino Uno R3.
+O mesmo se trata de um Kit de automação para viveiros de pintinhos. O projeto foi desenvolvido através da plataforma TinkerCad, tendo como núcleo o uso do Arduino Uno R3.
 
+<hr>
 
-O kit conta com os seguintes componentes:
+#### Link para o Slide Pitch do produto: [clique aqui](https://drive.google.com/file/d/1FXR7Pblmw9-ygJToVi3Be3Yff-kcoqTP/view?usp=sharing).
+
+#### Link para o Projeto no TinkerCad: [clique aqui](https://www.tinkercad.com/things/dI47YsIoyZI?sharecode=rwJta748ZPPNbRexio5A3HT2yMuB3HLH1L5iRSYlwyw).
+
+#### Código-fonte do Projeto Final: [clique aqui](./7-Projeto%20Final/ProjetoFinal.ino).
+
+#### Pequeno relatório acerca do Projeto Final: [clique aqui](./7-Projeto%20Final/relatório.md).
+
+<hr>
+<br>
+
+### O kit conta com os seguintes componentes:
 - 1x | Arduino Uno R3;
 - 3x | Micro servo;
 - 2x | Botão;
@@ -30,12 +42,12 @@ O kit conta com os seguintes componentes:
 - 1x | LED vermelho;
 - 1x | Buzzer.
 
-Com todos estes componentes, será possível montar um sistema que consegue efetuar trocas de água e ração e também controlar a temperatura interna do viveiro por meio do acionamento de lâmpadas incandescentes, tudo isso de forma autônoma, mas também permitindo que o sistema possa ser controlado de forma manual.
+Com todos estes componentes, foi possível montar um sistema que consegue efetuar trocas de água/ração e também controlar a temperatura interna do viveiro por meio do acionamento de lâmpadas incandescentes e um ventilador, tudo isso de forma autônoma, mas também permitindo que o sistema possa ser controlado de forma manual. Além disso, o mesmo conta com um sistema de alarme que é acionado quando o sistema entra em estado de alerta.
 
-## **Como o repositório será organizado?**
-O desenvolvimento do projeto seguirá por meio de módulos, ou seja, o projeto será fragmentado em partes menores que servirão tanto como objeto de estudo como também parte da versão final do projeto.
+## **Como o repositório foi organizado?**
+O desenvolvimento do projeto seguiu por meio de módulos, ou seja, o projeto foi fragmentado em partes menores que depois compuseram o projeto final.
 
-Esses módulos serão organizados por pastas na raiz do repositório, enumerados pela sua ordem de execução. E os avanços serão exibidos através de um mini relatório (com imagens) acerca dos resultados obtidos em cada módulo, código-fonte e, para o sistema final, link do projeto na plataforma TinkerCad. Além disso, a aba _Projects_ está sendo usada, logo, será possível observar qual ou quais módulos estão sendo trabalhados no momento.
+Esses módulos foram organizados por pastas na raiz do repositório, enumerados pela sua ordem de execução. E os avanços serão exibidos através de um mini relatório (com imagens) acerca dos resultados obtidos em cada módulo, código-fonte e, para o sistema final, link do projeto na plataforma TinkerCad. Além disso, a aba _Projects_ do GitHub está sendo usada, logo, será possível observar qual ou quais módulos estão sendo trabalhados no momento.
 
 ## **Módulos:**
 - **Sensores:** medição da temperatura e análise da luminosidade;
