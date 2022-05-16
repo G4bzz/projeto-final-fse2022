@@ -57,3 +57,7 @@ Caso a temperatura se eleve durante a noite, o sistema de controle de temperatur
 O sistema de alarme é composto pelo buzzer e LCD. O sistema tem como objetivo informar no LCD (por meio do caractere "!" no canto superior direito da tela) e disparar sinais sonoros quando uma irregularidade na temperatura do viveiro for indicada, emitindo som até que a situação se normalize.
 
 Ele é acionado toda vez que a temperatura estiver abaixo de 35°C ou acima de 40°C, pois essas faixas de temperatura são prejudiciais para os pintinhos.
+
+## Verificador de integridade dos componentes
+O sistema também possui a capacidade de testar todos os componentes de forma sequencial e informando no LCD cada componente que está sendo testado. Esse teste pode ser acionado pelo interruptor e dura cerca de 15 segundos.
+Obs.: Por não ser possível utilizar um terceiro botão de interrupção, fora utilizado um interruptor para simular um botão. Sendo assim, para ativar o verificador de integridade é necessário deslizar o interruptor para a direita e logo em seguida voltar para a posição original. Caso contrário, ao terminar os testes, o verificador é iniciado novamente.

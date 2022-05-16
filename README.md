@@ -14,7 +14,12 @@ O mesmo se trata de um Kit de automação para viveiros de pintinhos. O projeto 
 
 <hr>
 
-#### Link para o Slide Pitch do produto: [clique aqui](https://drive.google.com/file/d/1FXR7Pblmw9-ygJToVi3Be3Yff-kcoqTP/view?usp=sharing).
+
+#### Link para o vídeo de apresentação/demonstração: [clique aqui](https://youtu.be/y7Wwthm2X3s).
+
+#### Link para o slide do vídeo: [clique aqui](https://drive.google.com/file/d/18LDEdYvpb_x06BdekQDMNSgDQEDX0thg/view?usp=sharing).
+
+#### Link para o slide Pitch do produto: [clique aqui](https://drive.google.com/file/d/1FXR7Pblmw9-ygJToVi3Be3Yff-kcoqTP/view?usp=sharing).
 
 #### Link para o Projeto no TinkerCad: [clique aqui](https://www.tinkercad.com/things/dI47YsIoyZI?sharecode=rwJta748ZPPNbRexio5A3HT2yMuB3HLH1L5iRSYlwyw).
 
@@ -40,7 +45,8 @@ O mesmo se trata de um Kit de automação para viveiros de pintinhos. O projeto 
 - 1x | Sensor de luz ambiente [fototransistor];
 - 1x | LCD 16x2;
 - 1x | LED vermelho;
-- 1x | Buzzer.
+- 1x | Buzzer;
+- 1x | Interruptor deslizante.
 
 Com todos estes componentes, foi possível montar um sistema que consegue efetuar trocas de água/ração e também controlar a temperatura interna do viveiro por meio do acionamento de lâmpadas incandescentes e um ventilador, tudo isso de forma autônoma, mas também permitindo que o sistema possa ser controlado de forma manual. Além disso, o mesmo conta com um sistema de alarme que é acionado quando o sistema entra em estado de alerta.
 
@@ -59,3 +65,4 @@ Esses módulos foram organizados por pastas na raiz do repositório, enumerados 
 - **Ajustes finais:**
 	- Tratamento de falhas;
 	- Feedback no LCD;
+	- Verificador de integridade dos componentes.

@@ -2,12 +2,12 @@
 #include <Servo.h>
 
 //Configuracao personalizada
-#define tempoReposicaoAgua 4000	//tempo em milésimos
+#define tempoReposicaoAgua 25000	//tempo em milésimos
 #define tempoRemocaoAgua 3000	//tempo em milésimos
 #define tempoAdicaoAgua 3000	//tempo em milésimos
 #define limiteMinimoRacao 400	//quantidade em gramas
 #define limiteMaximoRacao 900	//quantidade em gramas
-#define temperaturaMinima 35	//temperatura em grau Celsius
+#define temperaturaMinima 30	//temperatura em grau Celsius
 #define temperaturaMaxima 40	//temperatura em grau Celsius
 
 //Declação do display;
@@ -57,6 +57,9 @@ void setup() {
 	
 	//"Ventilador"
 	pinMode (A5, OUTPUT);
+
+	//Interruptor  
+  	pinMode(A0,INPUT);
 	
 	//Inicializa os servos
 	servo_addAgua.write(0);
@@ -133,6 +136,7 @@ void balanca(){
 		lcd.clear();
 		servo_Comida.write(0);
 		repondo_comida = !repondo_comida;
+		est_botaoComida = 0;
 	}
 	//Caso o compartimento esteja em nivel baixo, aciona a reposicao
 	else if (analogRead(A3) < limiteMinimoRacao && !repondo_comida){
@@ -196,6 +200,67 @@ void troca_comida(){
 	troca_estComida();
 }
 
+void print_testando(String texto){
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Testando");
+	lcd.setCursor(0,1);
+  	lcd.print(texto);
+}
+
+//Demora cerca de 15 segundos
+void tester_componentes(){
+	print_testando("lampadas...");
+	digitalWrite(13, HIGH);
+	delay(2000);
+	digitalWrite(13, LOW);
+
+	print_testando("alarme...");
+	buzzer(true);
+	delay(2000);
+	buzzer(false);
+
+	print_testando("ventilador...");
+	digitalWrite(A5, HIGH);
+	delay(2000);
+	digitalWrite(A5, LOW);
+
+	print_testando("reposicoes...");
+	servo_rmvAgua.write(90);
+	servo_addAgua.write(90);
+	servo_Comida.write(90);
+	delay(1000);
+	servo_rmvAgua.write(0);
+	servo_addAgua.write(0);
+	servo_Comida.write(0);
+
+	print_testando("sensores...");
+  	delay(2000);
+	lcd.clear();
+	lcd.print("Temp:");
+	lcd.setCursor(0,1);
+	lcd.print("Racao:");
+	lcd.setCursor(11,1);
+	lcd.print("kg");
+	showInfos();
+	delay(3000);
+
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Testando sensor");
+	lcd.setCursor(0,1);
+	lcd.print("de luz:");
+	lcd.setCursor(8,1);
+	lcd.print(calcLumi());
+  	delay(2000);
+
+	lcd.clear();
+	lcd.setCursor(0,0);
+  	lcd.print("Teste finalizado");
+  	delay(2000);
+  	lcd.clear();
+}
+
 //Programa
 void loop() {
 	if(!repondo_comida && !repondo_agua){
@@ -209,6 +274,11 @@ void loop() {
 	}
   
 	if(est_botaoComida && !repondo_comida){
+		lcd.clear();
+		lcd.setCursor(1,0);
+		lcd.print("Repondo a");
+		lcd.setCursor(1,1);
+		lcd.print("racao...");
 		troca_comida();
 	}
 	
@@ -218,6 +288,10 @@ void loop() {
 		timer_Agua = millis();
 	}
 
+	if(analogRead(A0) > 1000){ //Se o interruptor de testes for acionado
+		tester_componentes();
+	}
+	Serial.println(est_botaoComida);
 	temporizador_agua();
 	timer_lamps();
 	balanca();
