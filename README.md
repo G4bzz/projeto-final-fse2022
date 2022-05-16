@@ -50,6 +50,10 @@ O mesmo se trata de um Kit de automação para viveiros de pintinhos. O projeto 
 
 Com todos estes componentes, foi possível montar um sistema que consegue efetuar trocas de água/ração e também controlar a temperatura interna do viveiro por meio do acionamento de lâmpadas incandescentes e um ventilador, tudo isso de forma autônoma, mas também permitindo que o sistema possa ser controlado de forma manual. Além disso, o mesmo conta com um sistema de alarme que é acionado quando o sistema entra em estado de alerta.
 
+### Fluxograma do sistema:
+![Fluxograma do sistema](./midia/fluxograma.png)
+Ver foto ampliada: [clique aqui](https://drive.google.com/file/d/1oGjAzLJr3ALBsLlNwFx5jXJnLixs3LGc/view?usp=sharing)
+
 ## **Como o repositório foi organizado?**
 O desenvolvimento do projeto seguiu por meio de módulos, ou seja, o projeto foi fragmentado em partes menores que depois compuseram o projeto final.
 
